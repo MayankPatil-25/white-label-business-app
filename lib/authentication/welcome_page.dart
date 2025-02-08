@@ -16,7 +16,7 @@ class WelcomPage extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 8, // 80% of the screen
-                  child: Container(
+                  child: SizedBox(
                     width: double.infinity,
                     child: Image(
                         image: AssetImage('assets/welcome_bg.png'),
@@ -25,7 +25,7 @@ class WelcomPage extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 2, // Remaining 20%
-                  child: Container(),
+                  child: SizedBox(),
                 ),
               ],
             ),
