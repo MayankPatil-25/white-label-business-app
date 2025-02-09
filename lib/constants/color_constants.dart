@@ -11,4 +11,6 @@ class MColors {
   static const Color textFieldSelectedColor = primaryAppColor;
 
   static const Color buttonTextColor = Colors.white;
+  static const Color pageBackgroundColor = Colors.white;
+  static const Color listItemColor = Color.fromARGB(255, 248, 248, 248);
 }

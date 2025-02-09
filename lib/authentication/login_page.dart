@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:white_label_business_app/home_tabbar/home_tabbed_page.dart';
 
 import '../common/widgets/custom_widgets.dart';
 import '../constants/color_constants.dart';
@@ -94,7 +95,7 @@ class LoginPage extends StatelessWidget {
     var loginButtonWidget = SizedBox(
         width: double.infinity,
         child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () => onLoginClicked(context),
             style: ElevatedButton.styleFrom(
               backgroundColor: MColors.primaryAppColor,
               shape: RoundedRectangleBorder(
@@ -166,4 +167,9 @@ class LoginPage extends StatelessWidget {
   void onForgotPasswordClicked() {}
 
   void onSignUpClicked() {}
+
+  void onLoginClicked(BuildContext context) {
+
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeTabbedPage()));
+  }
 }

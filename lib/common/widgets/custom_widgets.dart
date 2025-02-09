@@ -25,6 +25,7 @@ class MCustomWidgets {
             fontSize: 16,
           )),
       TextField(
+          obscureText: isSecure,
           decoration: InputDecoration(
               labelText: hintText,
               hintText: caption,
