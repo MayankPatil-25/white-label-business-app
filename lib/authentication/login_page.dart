@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import '../common/widgets/custom_font.dart';
+import '../common/widgets/custom_widgets.dart';
 import '../constants/color_constants.dart';
 import '../constants/texts_constants.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+    LoginPage({super.key});
+
+    Checkbox? checkBox;
 
   @override
   Widget build(BuildContext context) {
@@ -26,83 +27,69 @@ class LoginPage extends StatelessWidget {
                 spacing: 10,
                 children: [
                   Text(MConstants.signIn,
-                      style: MTextStyle.textStyle(fontSize: 45),
+                      style: MCustomWidgets.textStyle(fontSize: 40),
                       textAlign: TextAlign.start),
                   Align(
                       alignment: Alignment.centerLeft,
                       child: Container(
+                        margin: EdgeInsets.only(left: 5),
                           color: MColors.primaryAppColor,
                           height: 5,
-                          width: 100))
+                          width: 80))
                 ])));
 
-    var credentialsWidget = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 18,
+    var credentialsWidget = Container( margin: EdgeInsets.only(top:10), // margin 10
+        color: Colors.transparent,
+        child: Column(
+          spacing: 19,
       children: [
-        Text(MConstants.username,
-            style: MTextStyle.textStyle(
-              fontSize: 16,
-            )),
-        TextField(
-            decoration: InputDecoration(
-                labelText: MConstants.enterUsername,
-                hintText: MConstants.username,
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                      color: MColors.textFieldColor), // Default border color
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                      color: MColors.textFieldSelectedColor,
-                      width: 2.0), // Color when focused
-                )),
-            style: MTextStyle.textStyle(fontSize: 16)),
-        Text(MConstants.password,
-            style: MTextStyle.textStyle(
-              fontSize: 16,
-            )),
-        TextField(
-            obscureText: true,
-            decoration: InputDecoration(
-                labelText: MConstants.enterPassword,
-                hintText: MConstants.password,
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                      color: MColors.textFieldColor), // Default border color
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                      color: MColors.textFieldSelectedColor,
-                      width: 2.0), // Color when focused
-                )),
-            style: MTextStyle.textStyle(fontSize: 16)),
+        MCustomWidgets.getCustomInputFiled(caption: MConstants.username, hintText: MConstants.enterUsername),
+        MCustomWidgets.getCustomInputFiled(caption: MConstants.password, hintText: MConstants.enterPassword, isSecure: true),
       ],
-    );
+    ));
 
-    var checkBox = Padding(
-        padding: EdgeInsets.zero,
-        child: Checkbox(
+    checkBox = Checkbox(
             value: false,
             onChanged: OnRememberMeChecked,
             checkColor: MColors.primaryAppColor,
-            semanticLabel: MConstants.rememberMe));
+            semanticLabel: MConstants.rememberMe,
+            visualDensity: VisualDensity(horizontal: -4.0,vertical: 0), // Removes extra space
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    );
 
-    var forgetPasswordWidget = Row(children: [
+    var forgetPasswordWidget = SizedBox(
+        child: Row(children: [
       Expanded(
           flex: 5,
-          child: Row(children: [
-            checkBox,
-            Text(MConstants.rememberMe,
-                style: MTextStyle.textStyle(fontSize: 14))
+          child: Row(
+            spacing: 5,
+              mainAxisSize: MainAxisSize.min, // Prevents extra spacing
+              children: [
+            checkBox!,
+            TextButton(
+               onPressed: () { OnRememberMeChecked(checkBox?.value); },
+               style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero, // Remove extra paddingð
+                    minimumSize: Size(0, 0), // Remove minimum button constraints
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+                child: Text(MConstants.rememberMe, style: MCustomWidgets.textStyle(fontSize: 14, fontWeight: FontWeight.normal, color: MColors.secondaryTextColor)),
+                )
           ])),
       Expanded(
           flex: 5,
-          child: TextButton(
+          child: Container(
+              alignment: Alignment.centerRight,
+              margin: EdgeInsets.zero,
+              child: TextButton(
               onPressed: onForgotPasswordClicked,
+                  style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero, // Remove extra padding
+                      minimumSize: Size(0, 0), // Remove minimum button constraints
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap), // Shrink tap area
               child: Text(MConstants.forgotPassword,
-                  style: MTextStyle.textStyle(fontSize: 14))))
-    ]);
+                  textAlign: TextAlign.left,
+                  style: MCustomWidgets.textStyle(fontSize: 14, fontWeight: FontWeight.w500, color: MColors.primaryAppColor)))))
+    ]));
 
     var loginButtonWidget = SizedBox(
         width: double.infinity,
@@ -116,62 +103,64 @@ class LoginPage extends StatelessWidget {
             ),
             child: Padding(
               padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
-              child: const Text(
+              child: Text(
                 MConstants.login,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
-                ),
+                style: MCustomWidgets.textStyle(fontSize: 18.0,
+                    color: MColors.buttonTextColor,
+                    fontWeight: FontWeight.w500)
               ),
             )));
 
-    var signUpWidget = Row(children: [
-      Expanded(
-          flex: 5,
-          child: Row(children: [
-            checkBox,
+    var signUpWidget = SizedBox(
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.center, children: [
             Text(MConstants.doNotHaveAnAccount,
-                style: MTextStyle.textStyle(fontSize: 14))
-          ])),
-      Expanded(
-          flex: 5,
-          child: TextButton(
+                style: MCustomWidgets.textStyle(fontSize: 14, fontWeight: FontWeight.normal, color: MColors.secondaryTextColor))
+          ,TextButton(
               onPressed: onSignUpClicked,
               child: Text(MConstants.signUp,
-                  style: MTextStyle.textStyle(fontSize: 14))))
-    ]);
+                  style: MCustomWidgets.textStyle(fontSize: 14, fontWeight: FontWeight.w500, color: MColors.primaryAppColor)))
+    ]));
+
     return Scaffold(
-        body: SingleChildScrollView(
-            child: Stack(children:
-            [ SizedBox(
+        body: Stack(children: [
+      SingleChildScrollView(
+        child: Column(
+            children: [SizedBox(
+            height: height * 0.37,
+            width: width,
+          ),
+              SizedBox(child: Padding(
+              padding: EdgeInsets.all(20.0),
+              // 🚀 Auto height management
+              child: Column(
+                  spacing: 10,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    signInTitleWidget,
+                    credentialsWidget,
+                    forgetPasswordWidget,
+                    Container(margin: EdgeInsets.only(top:35),child: loginButtonWidget),
+                    signUpWidget
+                  ]))),
+        ]),
+      ),
+      SizedBox(
           width: double.infinity,
           height: height * 0.6,
           child: Image(
               image: AssetImage('assets/welcome_bg.png'),
               fit: BoxFit.fitWidth,
-              alignment: Alignment.bottomCenter)),
-      Column(children: [
-        Expanded(flex: 4, child: Container()),
-        Expanded(
-          flex: 6,
-          child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(spacing: 20, children: [
-                signInTitleWidget,
-                credentialsWidget,
-                forgetPasswordWidget,
-                loginButtonWidget,
-                signUpWidget
-              ])),
-        )
-      ]),
-    ])
-        )
-    );
+              alignment: Alignment.bottomCenter))
+    ]));
   }
 
   void OnRememberMeChecked(bool? value) {
-    if (value != null) {}
+
+    if (checkBox != null) {
+
+    }
   }
 
   void onForgotPasswordClicked() {}

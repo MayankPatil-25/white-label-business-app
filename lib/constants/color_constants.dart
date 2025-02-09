@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MColors {
   static const Color primaryAppColor = Color.fromARGB(255, 255,131,131);
@@ -10,4 +9,6 @@ class MColors {
 
   static const Color textFieldColor = primaryTextColor;
   static const Color textFieldSelectedColor = primaryAppColor;
+
+  static const Color buttonTextColor = Colors.white;
 }

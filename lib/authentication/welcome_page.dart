@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:white_label_business_app/authentication/login_page.dart';
+import 'package:white_label_business_app/common/widgets/custom_widgets.dart';
 import 'package:white_label_business_app/constants/texts_constants.dart';
 import '../constants/color_constants.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../constants/image_constants.dart';
 
-class WelcomPage extends StatelessWidget {
-  WelcomPage({super.key});
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class WelcomPage extends StatelessWidget {
                   child: SizedBox(
                     width: double.infinity,
                     child: Image(
-                        image: AssetImage('assets/welcome_bg.png'),
+                        image: AssetImage(MImageConstants.welcomeBackground),
                         fit: BoxFit.fill),
                   ),
                 ),
@@ -42,38 +43,53 @@ class WelcomPage extends StatelessWidget {
                           spacing: 20,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Text('Welcome',
-                                style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
-                                        color: Colors.black54,
-                                        fontSize: 40,
-                                        fontWeight: FontWeight.bold))),
+                            Text(MConstants.welcomeTitle,
+                                style: MCustomWidgets.textStyle(
+                                    fontSize: 40, fontWeight: FontWeight.bold)),
                             Text(
                               MConstants.welcomeCaption,
-                              style: TextStyle(
+                              style: MCustomWidgets.textStyle(
                                   fontSize: 16,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.normal,
                                   color: MColors.secondaryTextColor),
                             )
-                          ])),
-                ),
+                          ]),
+                )),
               ],
             )
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          foregroundColor: MColors.primaryAppColor,
-          backgroundColor: MColors.primaryAppColor,
-          onPressed: () => onNextClicked(context),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(40)),
-          child: Padding(padding: EdgeInsets.all(0), child: Image(
-            image: AssetImage('assets/right_arrow_icon.png'),
-            fit: BoxFit.fill, width: 40, height: 40,)),
-        ));
+        floatingActionButton: Row(
+          spacing: 10,
+        mainAxisAlignment: MainAxisAlignment.end, // Aligns the FAB and Text together
+          children: [
+            Text("Continue", style: MCustomWidgets.textStyle(fontSize: 16, fontWeight: FontWeight.normal)),
+           SizedBox(height: 70, width: 70, child:
+           Stack(clipBehavior: Clip.none, children: [
+             Align(
+             alignment: Alignment.centerRight,
+                 child:
+             FloatingActionButton(
+              foregroundColor: MColors.primaryAppColor,
+              backgroundColor: MColors.primaryAppColor,
+              onPressed: () => onNextClicked(context),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+            )),
+             IgnorePointer(
+               ignoring: true, // Allows touches to pass through this widget
+             child:
+            Align(alignment: Alignment.centerLeft, child: Image(
+               alignment: Alignment.centerLeft,
+               image: AssetImage(MImageConstants.goNextIcon),
+               fit: BoxFit.fitWidth, width: 55, height: 40)))
+           ])),
+          ],
+        )
+    );
   }
 
   void onNextClicked(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => LoginPage()));
   }
 }
