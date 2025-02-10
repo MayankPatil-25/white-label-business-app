@@ -23,8 +23,7 @@ class MCustomWidgets {
       Text(caption,
           style: MCustomWidgets.textStyle(
             fontSize: 16,
-          )),
-      TextField(
+          )),TextField(
           obscureText: isSecure,
           decoration: InputDecoration(
               labelText: hintText,
@@ -40,5 +39,27 @@ class MCustomWidgets {
               )),
           style: MCustomWidgets.textStyle(fontSize: 16))
     ]);
+  }
+
+  static Widget getCustomButton(String title, void Function() action) {
+    return SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+            onPressed: () => action(),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: MColors.primaryAppColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
+              child: Text(
+                  title,
+                  style: MCustomWidgets.textStyle(fontSize: 18.0,
+                      color: MColors.buttonTextColor,
+                      fontWeight: FontWeight.w500)
+              ),
+            )));
   }
 }

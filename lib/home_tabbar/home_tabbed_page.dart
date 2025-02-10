@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:white_label_business_app/constants/color_constants.dart';
+import 'package:white_label_business_app/helpers/database_helper.dart';
+import 'package:white_label_business_app/home_tabbar/customers_tab/customers_page.dart';
 import 'package:white_label_business_app/home_tabbar/services_tab/services_page.dart';
+import 'package:white_label_business_app/home_tabbar/workers_tab/workers_page.dart';
+import 'package:white_label_business_app/models/Worker.dart';
 
 class HomeTabbedPage extends StatefulWidget {
   @override
@@ -13,6 +17,8 @@ class _HomeTabbedPageState extends State<HomeTabbedPage> with SingleTickerProvid
   @override void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    
+    initDatabase();
   }
 
   @override void dispose() {
@@ -22,11 +28,11 @@ class _HomeTabbedPageState extends State<HomeTabbedPage> with SingleTickerProvid
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3, // Number of tabs
-      child: Scaffold(
+    return  SafeArea(top: false,
+        child: DefaultTabController(
+        length: 3, // Number of tabs
+        child:  Scaffold(
         backgroundColor: MColors.pageBackgroundColor,
-        appBar: AppBar(title: Text('')),
         bottomNavigationBar:
         Column(
           mainAxisSize: MainAxisSize.min,
@@ -48,16 +54,11 @@ class _HomeTabbedPageState extends State<HomeTabbedPage> with SingleTickerProvid
             controller: _tabController,
             labelColor: MColors.primaryAppColor, // Selected text/icon color
             unselectedLabelColor: Colors.grey, // Unselected color
-            indicatorSize: TabBarIndicatorSize.label,
-            // Indicator size
-            indicator:  UnderlineTabIndicator( // Moves selection to top
-              borderSide: BorderSide(color: Colors.green, width: 3), // Green top bar
-              insets: EdgeInsets.symmetric(horizontal: 16), // Adjust width
-            ), // Adjust width
+              indicatorColor: Colors.transparent,
             tabs: [
               Tab(icon: Icon(Icons.work_outline_rounded), text: "Service"),
-              Tab(icon: Icon(Icons.people), text: "Customers"),
-              Tab(icon: Icon(Icons.cut_rounded), text: "Workers"),
+              Tab(icon: Icon(Icons.groups), text: "Customers"),
+              Tab(icon: Icon(Icons.hail), text: "Workers"),
             ],
 
     )]),
@@ -65,33 +66,43 @@ class _HomeTabbedPageState extends State<HomeTabbedPage> with SingleTickerProvid
           controller: _tabController,
           children: [
             ServicesPage(),
-            SearchScreen(),
-            ProfileScreen(),
+            CustomersPage(),
+            WorkersPage(),
           ],
         ),
       ),
+      )
     );
   }
-}
 
-class SearchScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return
+  void initDatabase() async {
+    WidgetsFlutterBinding.ensureInitialized(); // Ensure database initializes properly
 
-      Scaffold( backgroundColor: Colors.brown,
-          body: Container(alignment: Alignment.center,
-              child: TextButton(onPressed: () {
-                Navigator.of(context).push( MaterialPageRoute(builder: (context) => ServicesPage()));
-              },
-                  child: Text("Navigate"))));
-  }
-}
+    final dbHelper = DatabaseHelper();
 
-class ProfileScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-        child: Text("Profile Screen", style: TextStyle(fontSize: 20)));
+    // Insert a new worker
+    await dbHelper.insertUser(
+        Worker( name: "Narayan Wagh",
+                age: 61,
+                mobile: 9998886660,
+                dateOfJoining: DateTime.now().toString()));
+
+    // Get all users
+    List<Worker> users = await dbHelper.getUsers();
+    print("All Users: ${users.map((worker) => worker.name).toList()}");
+
+    // Update a worker
+    if (users.isNotEmpty) {
+      Worker updatedUser = users.first;
+      updatedUser.name = "John Updated";
+      await dbHelper.updateUser(updatedUser);
+      print("Updated Worker: ${updatedUser.name}");
+    }
+
+    // Delete a worker
+    if (users.isNotEmpty) {
+      await dbHelper.deleteUser(users.first.id!);
+      print("Worker Deleted");
+    }
   }
 }

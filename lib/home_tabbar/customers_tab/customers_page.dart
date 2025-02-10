@@ -3,9 +3,9 @@ import 'package:white_label_business_app/common/widgets/custom_widgets.dart';
 import 'package:white_label_business_app/constants/texts_constants.dart';
 import 'package:white_label_business_app/home_tabbar/common_views/custom_list_item.dart';
 import 'package:white_label_business_app/constants/color_constants.dart';
-import 'package:white_label_business_app/home_tabbar/services_tab/add_service.dart';
+import 'package:white_label_business_app/home_tabbar/customers_tab/add_customer.dart';
 
-class ServicesPage extends StatelessWidget {
+class CustomersPage extends StatelessWidget {
 
   final List<String> items = List.generate(15, (index) => "Item $index");
 
@@ -15,7 +15,7 @@ class ServicesPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: MColors.primaryAppColor,
         title: Text(
-          MConstants.titleServices,
+          MConstants.titleCustomers,
           textAlign: TextAlign.center,
           style: MCustomWidgets.textStyle(fontSize: 40, color: MColors.buttonTextColor),
         ),
@@ -48,13 +48,13 @@ class ServicesPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "₹5000",
+                  "501",
                   style: MCustomWidgets.textStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black87),
                 ),
-                Text(
-                  '(Income Today)',
-                  style: MCustomWidgets.textStyle(fontSize: 12, fontWeight: FontWeight.normal, color: MColors.buttonTextColor),
-                )
+                // Text(
+                //   '(Happily served)',
+                //   style: MCustomWidgets.textStyle(fontSize: 12, fontWeight: FontWeight.normal, color: MColors.buttonTextColor),
+                // )
               ],
             ),
           ),
@@ -67,10 +67,8 @@ class ServicesPage extends StatelessWidget {
                 return Padding(padding: EdgeInsets.all(9),
                     child: CustomerCard(
                       customerName: "Babloo Pannasiya",
-                      serviceName: "Service name",
-                      workerName: "Worker name",
-                      price: "₹200",
-                    ));
+                      serviceName: "Since 2005",
+                      workerName: "Last visit: 2 Jan 2025", price: null));
               },
             ),
           ),
@@ -81,12 +79,12 @@ class ServicesPage extends StatelessWidget {
         backgroundColor: MColors.primaryAppColor,
         onPressed: () => onAddClicked(context),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-        child: Icon(Icons.content_cut_rounded, size: 30, color: MColors.buttonTextColor),
+        child: Icon(Icons.person_add_alt_1_sharp, size: 30, color: MColors.buttonTextColor),
       ),
     );
   }
 
   void onAddClicked(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddService()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddCustomer()));
   }
 }

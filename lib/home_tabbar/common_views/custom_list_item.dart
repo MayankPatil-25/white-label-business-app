@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:white_label_business_app/common/widgets/custom_widgets.dart';
 import 'package:white_label_business_app/constants/color_constants.dart';
 
 class CustomerCard extends StatelessWidget {
   final String customerName;
   final String serviceName;
   final String workerName;
-  final String price;
+  final String? price;
 
   CustomerCard({
     required this.customerName,
@@ -21,7 +22,7 @@ class CustomerCard extends StatelessWidget {
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: MColors.listItemColor,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(7),
         boxShadow: [
           BoxShadow(
             color: Colors.black12,
@@ -30,36 +31,41 @@ class CustomerCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
+      child: Row(children:[Expanded(child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             "Customer: $customerName",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: MCustomWidgets.textStyle(fontSize: 16, fontWeight: FontWeight.normal, color: MColors.primaryTextColor),
           ),
           SizedBox(height: 4),
           Text(
             serviceName,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style: MCustomWidgets.textStyle(fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: MColors.secondaryTextColor)
           ),
           SizedBox(height: 2),
           Text(
-            workerName,
-            style: TextStyle(fontSize: 14, color: Colors.black54),
-          ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Text(
-              price,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-            ),
-          ),
-        ],
+              workerName,
+              style: MCustomWidgets.textStyle(fontSize: 12,
+                  fontWeight: FontWeight.normal,
+                  color: MColors.secondaryTextColor)
+          )
+        ])
       ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: price == null ? Icon(Icons.arrow_forward_ios_rounded,
+              size: 16,
+              color: MColors.primaryAppColor) : Text(
+            price!,
+            style: MCustomWidgets.textStyle(fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: MColors.primaryAppColor)
+          ),
+        )
+      ])
     );
   }
 }

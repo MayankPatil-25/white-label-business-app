@@ -3,11 +3,11 @@ import 'package:white_label_business_app/common/widgets/custom_widgets.dart';
 import 'package:white_label_business_app/constants/texts_constants.dart';
 import 'package:white_label_business_app/home_tabbar/common_views/custom_list_item.dart';
 import 'package:white_label_business_app/constants/color_constants.dart';
-import 'package:white_label_business_app/home_tabbar/services_tab/add_service.dart';
+import 'package:white_label_business_app/home_tabbar/workers_tab/add_worker.dart';
 
-class ServicesPage extends StatelessWidget {
+class WorkersPage extends StatelessWidget {
 
-  final List<String> items = List.generate(15, (index) => "Item $index");
+  final List<String> items = List.generate(3, (index) => "Item $index");
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +15,10 @@ class ServicesPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: MColors.primaryAppColor,
         title: Text(
-          MConstants.titleServices,
+          MConstants.titleWorkers,
           textAlign: TextAlign.center,
-          style: MCustomWidgets.textStyle(fontSize: 40, color: MColors.buttonTextColor),
+          style: MCustomWidgets.textStyle(
+              fontSize: 40, color: MColors.buttonTextColor),
         ),
         automaticallyImplyLeading: false,
       ),
@@ -48,13 +49,15 @@ class ServicesPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "₹5000",
-                  style: MCustomWidgets.textStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black87),
+                  "3",
+                  style: MCustomWidgets.textStyle(fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87),
                 ),
-                Text(
-                  '(Income Today)',
-                  style: MCustomWidgets.textStyle(fontSize: 12, fontWeight: FontWeight.normal, color: MColors.buttonTextColor),
-                )
+                // Text(
+                //   '(Happily served)',
+                //   style: MCustomWidgets.textStyle(fontSize: 12, fontWeight: FontWeight.normal, color: MColors.buttonTextColor),
+                // )
               ],
             ),
           ),
@@ -66,11 +69,9 @@ class ServicesPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(padding: EdgeInsets.all(9),
                     child: CustomerCard(
-                      customerName: "Babloo Pannasiya",
-                      serviceName: "Service name",
-                      workerName: "Worker name",
-                      price: "₹200",
-                    ));
+                        customerName: "Babloo Pannasiya",
+                        serviceName: "Since 2005",
+                        workerName: "Age: 40", price: null));
               },
             ),
           ),
@@ -81,12 +82,13 @@ class ServicesPage extends StatelessWidget {
         backgroundColor: MColors.primaryAppColor,
         onPressed: () => onAddClicked(context),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-        child: Icon(Icons.content_cut_rounded, size: 30, color: MColors.buttonTextColor),
+        child: Icon(Icons.plus_one, size: 30,
+            color: MColors.buttonTextColor),
       ),
     );
   }
 
   void onAddClicked(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddService()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddWorker()));
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:white_label_business_app/authentication/login_page.dart';
 import 'package:white_label_business_app/common/widgets/custom_widgets.dart';
 import 'package:white_label_business_app/constants/texts_constants.dart';
-import '../constants/color_constants.dart';
-import '../constants/image_constants.dart';
+import 'package:white_label_business_app/constants/color_constants.dart';
+import 'package:white_label_business_app/constants/image_constants.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});

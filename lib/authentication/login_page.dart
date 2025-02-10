@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:white_label_business_app/home_tabbar/home_tabbed_page.dart';
-
-import '../common/widgets/custom_widgets.dart';
-import '../constants/color_constants.dart';
-import '../constants/texts_constants.dart';
+import 'package:white_label_business_app/common/widgets/custom_widgets.dart';
+import 'package:white_label_business_app/constants/color_constants.dart';
+import 'package:white_label_business_app/constants/texts_constants.dart';
 
 class LoginPage extends StatelessWidget {
     LoginPage({super.key});
@@ -92,26 +91,6 @@ class LoginPage extends StatelessWidget {
                   style: MCustomWidgets.textStyle(fontSize: 14, fontWeight: FontWeight.w500, color: MColors.primaryAppColor)))))
     ]));
 
-    var loginButtonWidget = SizedBox(
-        width: double.infinity,
-        child: ElevatedButton(
-            onPressed: () => onLoginClicked(context),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: MColors.primaryAppColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
-              child: Text(
-                MConstants.login,
-                style: MCustomWidgets.textStyle(fontSize: 18.0,
-                    color: MColors.buttonTextColor,
-                    fontWeight: FontWeight.w500)
-              ),
-            )));
-
     var signUpWidget = SizedBox(
         child: Row(
             mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -142,7 +121,8 @@ class LoginPage extends StatelessWidget {
                     signInTitleWidget,
                     credentialsWidget,
                     forgetPasswordWidget,
-                    Container(margin: EdgeInsets.only(top:35),child: loginButtonWidget),
+                    Container(margin: EdgeInsets.only(top:35),
+                        child: MCustomWidgets.getCustomButton(MConstants.login, () => onLoginClicked(context))),
                     signUpWidget
                   ]))),
         ]),
