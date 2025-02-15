@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:white_label_business_app/authentication/login_page.dart';
+import 'package:white_label_business_app/pages/authentication/login_page.dart';
 import 'package:white_label_business_app/common/widgets/custom_widgets.dart';
 import 'package:white_label_business_app/constants/texts_constants.dart';
 import 'package:white_label_business_app/constants/color_constants.dart';

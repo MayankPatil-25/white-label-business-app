@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:white_label_business_app/constants/color_constants.dart';
 import 'package:white_label_business_app/helpers/database_helper.dart';
-import 'package:white_label_business_app/home_tabbar/customers_tab/customers_page.dart';
-import 'package:white_label_business_app/home_tabbar/services_tab/services_page.dart';
-import 'package:white_label_business_app/home_tabbar/workers_tab/workers_page.dart';
+import 'package:white_label_business_app/pages/customers_tab/customers_page.dart';
+import 'package:white_label_business_app/pages/services_tab/services_page.dart';
+import 'package:white_label_business_app/pages/workers_tab/workers_page.dart';
 import 'package:white_label_business_app/models/Worker.dart';
 
 class HomeTabbedPage extends StatefulWidget {
@@ -18,7 +18,7 @@ class _HomeTabbedPageState extends State<HomeTabbedPage> with SingleTickerProvid
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
     
-    initDatabase();
+    // initDatabase();
   }
 
   @override void dispose() {

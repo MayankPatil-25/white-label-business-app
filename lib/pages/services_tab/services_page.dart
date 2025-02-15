@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:white_label_business_app/common/widgets/custom_widgets.dart';
 import 'package:white_label_business_app/constants/texts_constants.dart';
-import 'package:white_label_business_app/home_tabbar/common_views/custom_list_item.dart';
+import 'package:white_label_business_app/pages/common_views/custom_list_item.dart';
 import 'package:white_label_business_app/constants/color_constants.dart';
-import 'package:white_label_business_app/home_tabbar/services_tab/add_service.dart';
+import 'package:white_label_business_app/pages/services_tab/add_service.dart';
 
 class ServicesPage extends StatelessWidget {
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:white_label_business_app/common/widgets/custom_widgets.dart';
 import 'package:white_label_business_app/constants/texts_constants.dart';
-import 'package:white_label_business_app/home_tabbar/common_views/custom_list_item.dart';
+import 'package:white_label_business_app/pages/common_views/custom_list_item.dart';
 import 'package:white_label_business_app/constants/color_constants.dart';
-import 'package:white_label_business_app/home_tabbar/customers_tab/add_customer.dart';
+import 'package:white_label_business_app/pages/customers_tab/add_customer.dart';
 
 class CustomersPage extends StatelessWidget {
 
