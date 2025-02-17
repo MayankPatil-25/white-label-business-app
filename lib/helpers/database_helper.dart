@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:white_label_business_app/models/Worker.dart';
+import 'package:white_label_business_app/models/worker.dart';
 
 // Database Helper Class
 class DatabaseHelper {

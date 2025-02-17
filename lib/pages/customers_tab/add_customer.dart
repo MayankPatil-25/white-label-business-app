@@ -25,13 +25,13 @@ class AddCustomer extends StatelessWidget {
                     child: Column(
                       spacing: 19,
                       children: [
-                        MCustomWidgets.getCustomInputFiled(
+                        MCustomWidgets.getCustomInputField(
                             caption: MConstants.customerName, hintText: ''),
-                        MCustomWidgets.getCustomInputFiled(
+                        MCustomWidgets.getCustomInputField(
                             caption: MConstants.mobileNumber, hintText: ''),
-                        MCustomWidgets.getCustomInputFiled(
+                        MCustomWidgets.getCustomInputField(
                             caption: MConstants.age, hintText: ''),
-                        MCustomWidgets.getCustomInputFiled(
+                        MCustomWidgets.getCustomInputField(
                             caption: MConstants.date, hintText: ''),
                         Container(
                             margin: EdgeInsets.only(top: 25),

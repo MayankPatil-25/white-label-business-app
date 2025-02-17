@@ -4,7 +4,7 @@ import 'package:white_label_business_app/helpers/database_helper.dart';
 import 'package:white_label_business_app/pages/customers_tab/customers_page.dart';
 import 'package:white_label_business_app/pages/services_tab/services_page.dart';
 import 'package:white_label_business_app/pages/workers_tab/workers_page.dart';
-import 'package:white_label_business_app/models/Worker.dart';
+import 'package:white_label_business_app/models/worker.dart';
 
 class HomeTabbedPage extends StatefulWidget {
   @override

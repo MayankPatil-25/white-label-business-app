@@ -40,4 +40,7 @@ class MConstants {
   static const String dateOfJoining = "Date of Joining";
 
   static const String date = "Date";
+
+  static const String validationEnterValidUsername = 'Please enter a valid username.';
+  static const String validationEnterValidPassword = 'Password must be at least 6 characters.';
 }

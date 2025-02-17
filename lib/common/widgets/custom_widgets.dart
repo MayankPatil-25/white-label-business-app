@@ -7,16 +7,18 @@ class MCustomWidgets {
   static TextStyle textStyle(
       {required double fontSize,
       Color color = MColors.primaryTextColor,
-      FontWeight fontWeight = FontWeight.bold}) {
+      FontWeight fontWeight = FontWeight.bold,
+      FontStyle fontStyle = FontStyle.normal
+      }) {
     return TextStyle(
         fontSize: fontSize,
         fontFamily: MConstants.poppinsFont,
         color: color,
         fontWeight: fontWeight,
-        fontStyle: FontStyle.normal);
+        fontStyle: fontStyle);
   }
 
-  static Widget getCustomInputFiled({required String caption, required String hintText, bool isSecure = false}) {
+  static Widget getCustomInputField({required String caption, required String hintText, bool isSecure = false}) {
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -41,6 +43,39 @@ class MCustomWidgets {
     ]);
   }
 
+  static Widget getCustomInputFieldWithBloc({required String caption,
+    required String hintText,
+    required String? errorText,
+    required TextEditingController controller,
+    required void Function(String value) onTextChanged,
+    bool isSecure = false}) {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(caption,
+              style: MCustomWidgets.textStyle(
+                fontSize: 16,
+              )),TextField(
+              onChanged: onTextChanged,
+              obscureText: isSecure,
+              decoration: InputDecoration(
+                  labelText: hintText,
+                  hintText: caption,
+                  errorText: errorText,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                        color: MColors.textFieldColor), // Default border color
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                        color: MColors.textFieldSelectedColor,
+                        width: 2.0), // Color when focused
+                  )),
+              style: MCustomWidgets.textStyle(fontSize: 16))
+        ]);
+  }
+
+
   static Widget getCustomButton(String title, void Function() action) {
     return SizedBox(
         width: double.infinity,
@@ -61,5 +96,16 @@ class MCustomWidgets {
                       fontWeight: FontWeight.w500)
               ),
             )));
+  }
+
+  static FloatingActionButton getCustomFloatingButton(IconData? iconData,
+      void Function() onButtonPressed) {
+   return FloatingActionButton(
+      foregroundColor: MColors.primaryAppColor,
+      backgroundColor: MColors.primaryAppColor,
+      onPressed: () => onButtonPressed(),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+      child: Icon(Icons.content_cut_rounded, size: 30, color: MColors.buttonTextColor),
+    );
   }
 }

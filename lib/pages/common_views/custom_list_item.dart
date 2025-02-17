@@ -35,8 +35,8 @@ class CustomerCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Customer: $customerName",
-            style: MCustomWidgets.textStyle(fontSize: 16, fontWeight: FontWeight.normal, color: MColors.primaryTextColor),
+            customerName,
+            style: MCustomWidgets.textStyle(fontSize: 18, fontWeight: FontWeight.normal, color: MColors.primaryTextColor),
           ),
           SizedBox(height: 4),
           Text(
@@ -50,7 +50,8 @@ class CustomerCard extends StatelessWidget {
               workerName,
               style: MCustomWidgets.textStyle(fontSize: 12,
                   fontWeight: FontWeight.normal,
-                  color: MColors.secondaryTextColor)
+                  color: MColors.secondaryTextColor,
+                  fontStyle: FontStyle.italic)
           )
         ])
       ),

@@ -4,6 +4,10 @@ import 'package:white_label_business_app/constants/color_constants.dart';
 import 'package:white_label_business_app/constants/texts_constants.dart';
 
 class AddService extends StatelessWidget {
+
+  final String data;
+  AddService({required this.data});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,19 +28,20 @@ class AddService extends StatelessWidget {
                     child: Column(
                       spacing: 19,
                       children: [
-                        MCustomWidgets.getCustomInputFiled(
+                        MCustomWidgets.getCustomInputField(
                             caption: MConstants.customerName, hintText: ''),
-                        MCustomWidgets.getCustomInputFiled(
+                        MCustomWidgets.getCustomInputField(
                             caption: MConstants.service, hintText: ''),
-                        MCustomWidgets.getCustomInputFiled(
+                        MCustomWidgets.getCustomInputField(
                             caption: MConstants.worker, hintText: ''),
-                        MCustomWidgets.getCustomInputFiled(
+                        MCustomWidgets.getCustomInputField(
                             caption: MConstants.amount, hintText: ''),
                         Container(
                             margin: EdgeInsets.only(top: 25),
                             child: MCustomWidgets.getCustomButton(
                                 MConstants.titleAddService, () {
                               // Add Service button clicked
+                              Navigator.pop(context, 'Data from Second Page');
                             }))
                       ],
                     )))));

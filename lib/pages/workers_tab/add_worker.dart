@@ -24,13 +24,13 @@ class AddWorker extends StatelessWidget {
                     child: Column(
                       spacing: 19,
                       children: [
-                        MCustomWidgets.getCustomInputFiled(
+                        MCustomWidgets.getCustomInputField(
                             caption: MConstants.workerName, hintText: ''),
-                        MCustomWidgets.getCustomInputFiled(
+                        MCustomWidgets.getCustomInputField(
                             caption: MConstants.mobileNumber, hintText: ''),
-                        MCustomWidgets.getCustomInputFiled(
+                        MCustomWidgets.getCustomInputField(
                             caption: MConstants.age, hintText: ''),
-                        MCustomWidgets.getCustomInputFiled(
+                        MCustomWidgets.getCustomInputField(
                             caption: MConstants.dateOfJoining, hintText: ''),
                         Container(
                             margin: EdgeInsets.only(top: 25),
