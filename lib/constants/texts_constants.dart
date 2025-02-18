@@ -24,6 +24,9 @@ class MConstants {
   static const String titleCustomers = "Customers";
   static const String titleWorkers = "Workers";
 
+  // Salon Service List
+  static const String incomeToday = "(Income Today)";
+
   // Add data pages
   static const String titleAddService = "Add Service";
   static const String titleAddCustomer = "Add Customer";
@@ -31,7 +34,7 @@ class MConstants {
 
   static const String customerName = "Customer Name";
   static const String service = "Service";
-  static const String worker = "Work";
+  static const String worker = "Worker";
   static const String amount = "Amount";
 
   static const String workerName = "Name";

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:white_label_business_app/pages/authentication/welcome_page.dart';
+import 'package:white_label_business_app/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: WelcomePage(),
+      home: SplashScreen(),
     );
   }
 }

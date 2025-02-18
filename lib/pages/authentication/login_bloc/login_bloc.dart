@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:white_label_business_app/constants/texts_constants.dart';
+import 'package:white_label_business_app/data/static_storage.dart';
 import 'package:white_label_business_app/helpers/validation_helper.dart';
 import 'login_event.dart';
 import 'login_state.dart';
@@ -34,7 +35,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (!state.isUsernameValid || !state.isPasswordValid) return;
 
     emit(state.copyWith(isSubmitting: true, isFailure: false, isSuccess: false));
-
+    //todo: Remove: This Inits the static list for test data.
+    await StaticStorage.init();
     await Future.delayed(const Duration(seconds: 2)); // Simulate API call
 
     if (state.username == "admin" && state.password == "password123") {

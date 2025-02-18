@@ -1,14 +1,14 @@
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 
-class Worker {
+class Customer {
   final int id;
   final String name;
   final int mobile;
   final DateTime dateOfJoining;
   final int age;
 
-  Worker({
+  Customer({
     required this.id,
     required this.name,
     required this.age,
@@ -16,13 +16,14 @@ class Worker {
     required this.dateOfJoining
   });
 
-  factory Worker.fromJson(Map<String, dynamic> json) {
-    return Worker(
-        id: json["id"],
-        name: json["name"],
-        age: json["age"],
-        mobile: json["mobile"],
-        dateOfJoining: json["dateOfJoining"]
+  factory Customer.fromJson(Map<String, dynamic> json) {
+    return Customer(
+      id: json["id"],
+      name: json["name"],
+      age: json["age"],
+      mobile: json["mobile"],
+      dateOfJoining: json["dateOfJoining"]
     );
   }
 }
+

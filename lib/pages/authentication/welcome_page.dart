@@ -89,7 +89,7 @@ class WelcomePage extends StatelessWidget {
   }
 
   void onNextClicked(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => LoginPage()));
+      Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
   }
 }

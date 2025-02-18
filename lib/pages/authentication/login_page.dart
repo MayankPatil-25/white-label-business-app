@@ -235,7 +235,7 @@ class _LoginPageState extends State<LoginPage> {
   void onSignUpClicked() {}
 
   void onLoginClicked(BuildContext context) {
-    Navigator.of(context).push(
+    Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => HomeTabbedPage()));
   }
 }
