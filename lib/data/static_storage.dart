@@ -1,5 +1,5 @@
 import 'package:white_label_business_app/models/customer.dart';
-import 'package:white_label_business_app/models/salon_catelog.dart';
+import 'package:white_label_business_app/models/salon_catalog.dart';
 import 'package:white_label_business_app/models/salon_service.dart';
 import 'package:white_label_business_app/models/worker.dart';
 

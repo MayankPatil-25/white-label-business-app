@@ -7,6 +7,7 @@ class MConstants {
   static const String welcomeTitle = 'Welcome';
   static const String welcomeCaption = 'It\'s time to manage your business easily than ever before with the Manas mobile app.';
   static const String signIn = "Sign in";
+  static const String continueBtn = "Continue";
 
   // Sign in screen
   static const String username = "Username";
@@ -24,8 +25,9 @@ class MConstants {
   static const String titleCustomers = "Customers";
   static const String titleWorkers = "Workers";
 
-  // Salon Service List
+  // Tabs Listing Pages
   static const String incomeToday = "(Income Today)";
+  static const String andCounting = "(and counting . . .)";
 
   // Add data pages
   static const String titleAddService = "Add Service";
@@ -46,4 +48,5 @@ class MConstants {
 
   static const String validationEnterValidUsername = 'Please enter a valid username.';
   static const String validationEnterValidPassword = 'Password must be at least 6 characters.';
+  static const String validationEnterAllDetailsTryAgain = 'Please enter all the details and try again.';
 }

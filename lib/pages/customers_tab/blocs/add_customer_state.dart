@@ -1,62 +1,47 @@
-import 'package:white_label_business_app/models/salon_service.dart';
+import 'package:white_label_business_app/models/customer.dart';
 
-class AddServiceState {
-  final int customerId;
+class AddCustomerState {
   final String customerName;
-  final List<int>? serviceIds;
-  final List<String>? serviceNames;
-  final int workerId;
-  final String workerName;
-  final int price;
-  final bool isSuccess;
+  final int age;
+  final int mobileNumber;
+  DateTime? dateOfJoining = DateTime.now();
 
+  final bool isSuccess;
   final String? errorMessage;
 
-  SalonService? salonService;
+  Customer? customer;
 
-  AddServiceState(
-      {this.customerId = 0,
-      this.customerName = '',
-      this.workerId = 0,
-      this.workerName = "",
-      this.price = 0,
+  AddCustomerState(
+      {this.customerName = '',
+      this.age = 0,
+      this.mobileNumber = 0,
       this.isSuccess = false,
-      this.serviceIds,
-      this.serviceNames,
+      this.dateOfJoining,
       this.errorMessage});
 
-  AddServiceState copyWith(
-      {int? customerId,
-      String? customerName,
-      List<int>? serviceIds,
-      List<String>? serviceNames,
-      int? workerId,
-      String? workerName,
-      int? price,
+  AddCustomerState copyWith(
+      {String? customerName,
+      int? age,
+      int? mobileNumber,
       bool? isSuccess,
-      String? errorMessage}) {
-
-    return AddServiceState(
-        customerId: customerId ?? this.customerId,
+      DateTime? dateOfJoining,
+      String? errorMessage})
+  {
+    return AddCustomerState(
         customerName: customerName ?? this.customerName,
-        serviceIds: serviceIds ?? this.serviceIds,
-        serviceNames: serviceNames ?? this.serviceNames,
-        workerId: workerId ?? this.workerId,
-        workerName: workerName ?? this.workerName,
-        price: price ?? this.price,
+        age: age ?? this.age,
+        mobileNumber: mobileNumber ?? this.mobileNumber,
+        dateOfJoining: dateOfJoining ?? this.dateOfJoining,
         isSuccess: isSuccess ?? false,
         errorMessage: errorMessage);
   }
 
-  void initSalonService(int transactionId) {
-   salonService = SalonService(
-        transactionId: transactionId,
-        customerId: customerId,
-        customerName: customerName,
-        serviceIds: serviceIds ?? [],
-        serviceNames: serviceNames ?? [],
-        workerId: workerId,
-        workerName: workerName,
-        price: price);
+  void initCustomer(int customerId) {
+    customer = Customer(
+        id: customerId,
+        name: customerName,
+        age: age,
+        mobile: mobileNumber,
+        dateOfJoining: DateTime.now());
   }
 }

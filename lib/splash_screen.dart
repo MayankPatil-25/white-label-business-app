@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     // Navigate to another screen after the animation
-    Future.delayed(Duration(seconds: 4), () {
+    Future.delayed(Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => WelcomePage()));
     });

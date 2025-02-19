@@ -1,56 +1,51 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:white_label_business_app/constants/texts_constants.dart';
+import 'package:white_label_business_app/data/static_storage.dart';
+import 'package:white_label_business_app/pages/customers_tab/blocs/add_customer_event.dart';
+import 'package:white_label_business_app/pages/customers_tab/blocs/add_customer_state.dart';
 import 'package:white_label_business_app/pages/services_tab/blocs/add_service_event.dart';
 import 'package:white_label_business_app/pages/services_tab/blocs/add_service_state.dart';
 
-class AddServiceBloc extends Bloc<AddServiceEvent, AddServiceState> {
-  AddServiceBloc() : super(AddServiceState()) {
-    on<AddWorkerDetailEvent>(onUpdateWorkerDetail);
-    on<AddCustomerDetailEvent>(onUpdateCustomerDetail);
-    on<AddSalonCatalogDetailEvent>(onUpdateSalonCatalogDetail);
-    on<AddPriceEvent>(onUpdatePrice);
-    on<AddSalonServiceSubmittedEvent>(onSubmitSalonServiceForm);
+class AddCustomerBloc extends Bloc<AddCustomerEvent, AddCustomerState> {
+  AddCustomerBloc() : super(AddCustomerState()) {
+    on<CustomerNameChangedEvent>(onCustomerNameChanged);
+    on<CustomerMobileNumberChangeEvent>(onCustomerMobileNumber);
+    on<CustomerAgeChangedEvent>(onCustomerAgeChanged);
+    on<DateOfJoiningChangedEvent>(onDateOfJoiningChanged);
+    on<AddCustomerFormSubmittedEvent>(onAddCustomerFormSubmitted);
   }
 
-  FutureOr<void> onUpdateWorkerDetail(
-      AddWorkerDetailEvent event, Emitter<AddServiceState> emit) {
-    if (event.worker != null) {
-      emit(state.copyWith(
-          workerId: event.worker!.id, workerName: event.worker!.name));
-    }
+  FutureOr<void> onCustomerNameChanged(
+      CustomerNameChangedEvent event, Emitter<AddCustomerState> emit) {
+    emit(state.copyWith(customerName: event.customerName));
   }
 
-  FutureOr<void> onUpdateSalonCatalogDetail(
-      AddSalonCatalogDetailEvent event, Emitter<AddServiceState> emit) {
-    if (event.catalogItem != null) {
-      emit(state.copyWith(serviceIds: [event.catalogItem!.id],
-          serviceNames: [event.catalogItem!.name]));
-    }
+  FutureOr<void> onCustomerMobileNumber(
+      CustomerMobileNumberChangeEvent event, Emitter<AddCustomerState> emit) {
+    emit(state.copyWith(mobileNumber: event.mobileNumber));
   }
 
-  FutureOr<void> onUpdateCustomerDetail(
-      AddCustomerDetailEvent event, Emitter<AddServiceState> emit) {
-    if (event.customer != null) {
-      emit(state.copyWith(customerId: event.customer!.id, customerName: event.customer!.name));
-    }
+  FutureOr<void> onDateOfJoiningChanged(
+      DateOfJoiningChangedEvent event, Emitter<AddCustomerState> emit) {
+    emit(state.copyWith(dateOfJoining: event.dateTime));
   }
 
-  FutureOr<void> onUpdatePrice(AddPriceEvent event, Emitter<AddServiceState> emit) {
-    emit(state.copyWith(price: event.price));
+  FutureOr<void> onCustomerAgeChanged(
+      CustomerAgeChangedEvent event, Emitter<AddCustomerState> emit) {
+    emit(state.copyWith(age: event.age));
   }
 
-  FutureOr<void> onSubmitSalonServiceForm(
-      AddSalonServiceSubmittedEvent event, Emitter<AddServiceState> emit) {
-    if (state.customerName.isNotEmpty &&
-        state.workerName.isNotEmpty &&
-        (state.serviceNames?.length ?? 0) > 0) {
+  FutureOr<void> onAddCustomerFormSubmitted(
+      AddCustomerFormSubmittedEvent event, Emitter<AddCustomerState> emit) {
+    if (state.customerName.isNotEmpty && state.mobileNumber > 0) {
       var successState = state.copyWith(isSuccess: true);
-      successState.initSalonService(1007);
+      successState.initCustomer(100 + StaticStorage.customersData.length + 1);
       emit(successState);
     } else {
       emit(state.copyWith(
-          errorMessage: 'Please enter all the details and try again.'));
+          errorMessage: MConstants.validationEnterAllDetailsTryAgain));
     }
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:white_label_business_app/common/widgets/custom_widgets.dart';
 import 'package:white_label_business_app/constants/texts_constants.dart';
+import 'package:white_label_business_app/models/customer.dart';
 import 'package:white_label_business_app/pages/common_views/base_scaffold.dart';
 import 'package:white_label_business_app/pages/common_views/custom_list_item.dart';
 import 'package:white_label_business_app/constants/color_constants.dart';
@@ -9,11 +10,10 @@ import 'package:white_label_business_app/pages/customers_tab/add_customer.dart';
 import 'package:white_label_business_app/pages/customers_tab/blocs/customer_page_bloc.dart';
 import 'package:white_label_business_app/pages/customers_tab/blocs/customer_page_event.dart';
 import 'package:white_label_business_app/pages/customers_tab/blocs/customer_page_state.dart';
-import 'package:white_label_business_app/pages/services_tab/blocs/service_page_bloc.dart';
-import 'package:white_label_business_app/pages/services_tab/blocs/service_page_event.dart';
-import 'package:white_label_business_app/pages/services_tab/blocs/service_page_state.dart';
 
 class CustomersPage extends StatefulWidget {
+  const CustomersPage({super.key});
+
   @override
   State<CustomersPage> createState() => _CustomersPageState();
 }
@@ -67,7 +67,7 @@ class _CustomersPageState extends State<CustomersPage> {
                             color: Colors.black87),
                       ),
                       Text(
-                        '(and counting . . .)',
+                        MConstants.continueBtn,
                         style: MCustomWidgets.textStyle(fontSize: 12, fontWeight: FontWeight.normal, color: MColors.buttonTextColor),
                       )
                     ],
@@ -96,8 +96,18 @@ class _CustomersPageState extends State<CustomersPage> {
     );
   }
 
-  void onAddClicked(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => AddCustomer()));
+  // void onAddClicked(BuildContext context) async {
+  void onAddClicked(BuildContext context) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AddCustomer(),
+      ),
+    );
+
+    if (result != null && result is Customer) {
+      // Dispatch an event to update the list
+      _customerPageBloc.add(AddNewCustomerEvent(result));
+    }
   }
 }

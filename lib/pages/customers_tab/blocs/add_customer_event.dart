@@ -1,27 +1,27 @@
 import 'package:white_label_business_app/models/customer.dart';
-import 'package:white_label_business_app/models/salon_catelog.dart';
+import 'package:white_label_business_app/models/salon_catalog.dart';
 import 'package:white_label_business_app/models/worker.dart';
 
-abstract class AddServiceEvent { }
+abstract class AddCustomerEvent { }
 
-class AddCustomerDetail extends AddServiceEvent {
-  final Customer? customer;
-  AddCustomerDetail(this.customer);
+class CustomerNameChangedEvent extends AddCustomerEvent {
+  final String customerName;
+  CustomerNameChangedEvent(this.customerName);
 }
 
-class AddSalonCatalogDetail extends AddServiceEvent {
-  final SalonCatalog? catalogItem;
-  AddSalonCatalogDetail(this.catalogItem);
+class CustomerMobileNumberChangeEvent extends AddCustomerEvent {
+  final int mobileNumber;
+  CustomerMobileNumberChangeEvent(this.mobileNumber);
 }
 
-class AddWorkerDetail extends AddServiceEvent {
-  final Worker? worker;
-  AddWorkerDetail(this.worker);
+class CustomerAgeChangedEvent extends AddCustomerEvent {
+  final int age;
+  CustomerAgeChangedEvent(this.age);
 }
 
-class AddPrice extends AddServiceEvent {
-  final int price;
-  AddPrice(this.price);
+class DateOfJoiningChangedEvent extends AddCustomerEvent {
+  final DateTime dateTime;
+  DateOfJoiningChangedEvent(this.dateTime);
 }
 
-class AddSalonServiceSubmittedEvent extends AddServiceEvent { }
+class AddCustomerFormSubmittedEvent extends AddCustomerEvent { }

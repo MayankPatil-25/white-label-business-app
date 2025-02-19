@@ -13,7 +13,7 @@ class ServicePageBloc extends Bloc<ServicePageEvent, ServicePageState> {
   }
 
   FutureOr<void> onAddingNewService(AddNewSalonServiceEvent event, Emitter<ServicePageState> emit) {
-    StaticStorage.salonServices.add(event.transaction);
+    // StaticStorage.salonServices.add(event.transaction);
     emit(state.addNew(event.transaction));
   }
 

@@ -38,21 +38,23 @@ class WelcomePage extends StatelessWidget {
                 Expanded(
                   flex: 3, // Remaining 20%
                   child: Padding(
-                      padding: EdgeInsets.all(24),
+                      padding: EdgeInsets.only(bottom: 20, left: 20, right: 20),
                       child: Column(
-                          spacing: 20,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Text(MConstants.welcomeTitle,
                                 style: MCustomWidgets.textStyle(
                                     fontSize: 40, fontWeight: FontWeight.bold)),
+                            Container(
+                                margin: EdgeInsets.only(top: 15),
+                                color:  Colors.transparent, child:
                             Text(
                               MConstants.welcomeCaption,
                               style: MCustomWidgets.textStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                   color: MColors.secondaryTextColor),
-                            )
+                            ))
                           ]),
                 )),
               ],
@@ -63,7 +65,7 @@ class WelcomePage extends StatelessWidget {
           spacing: 10,
         mainAxisAlignment: MainAxisAlignment.end, // Aligns the FAB and Text together
           children: [
-            Text("Continue", style: MCustomWidgets.textStyle(fontSize: 16, fontWeight: FontWeight.normal)),
+            Text(MConstants.continueBtn, style: MCustomWidgets.textStyle(fontSize: 16, fontWeight: FontWeight.normal)),
            SizedBox(height: 70, width: 70, child:
            Stack(clipBehavior: Clip.none, children: [
              Align(

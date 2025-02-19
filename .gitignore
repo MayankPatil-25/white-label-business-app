@@ -35,11 +35,13 @@ ios/Flutter/Flutter.podspec
 # Android related
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
+**/android/.*
 **/android/captures/
 **/android/gradlew
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
+android/app/.*
 
 # iOS/XCode related
 **/ios/**/*.mode1v3

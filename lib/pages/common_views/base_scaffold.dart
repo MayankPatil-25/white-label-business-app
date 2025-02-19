@@ -10,12 +10,12 @@ class BaseScaffold extends StatelessWidget {
   BaseScaffold({
     required this.title,
     required this.body,
-    required this.floatingActionButton
+    this.floatingActionButton
   });
 
   final String title;
   final Widget body;
-  final Widget floatingActionButton;
+  final Widget? floatingActionButton;
   bool _isLoading = false;
 
   @override
@@ -29,7 +29,7 @@ class BaseScaffold extends StatelessWidget {
              textAlign: TextAlign.center,
              style: MCustomWidgets.textStyle(fontSize: 40, color: MColors.buttonTextColor),
            ),
-           automaticallyImplyLeading: false,
+           // automaticallyImplyLeading: false,
          ),
         body: body ?? Container(color: Colors.cyanAccent),
         floatingActionButton: floatingActionButton,

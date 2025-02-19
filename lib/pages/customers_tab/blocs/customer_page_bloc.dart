@@ -11,7 +11,6 @@ class CustomerPageBloc extends Bloc<CustomerPageEvent, CustomerPageState> {
   }
 
   FutureOr<void> onAddNewCustomer(AddNewCustomerEvent event, Emitter<CustomerPageState> emit) {
-    StaticStorage.customersData.add(event.customer);
     emit(state.addNew(event.customer));
   }
 
@@ -25,5 +24,6 @@ class CustomerPageBloc extends Bloc<CustomerPageEvent, CustomerPageState> {
     emit(state.init(StaticStorage.customersData));
 
     // todo: use state.loadNewBatchOf() when we do pagination
+
   }
 }
