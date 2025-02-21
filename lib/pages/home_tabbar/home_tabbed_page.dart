@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:white_label_business_app/constants/color_constants.dart';
-import 'package:white_label_business_app/data/static_storage.dart';
 import 'package:white_label_business_app/pages/customers_tab/blocs/customer_page_bloc.dart';
 import 'package:white_label_business_app/pages/customers_tab/customers_page.dart';
 import 'package:white_label_business_app/pages/services_tab/blocs/service_page_bloc.dart';
 import 'package:white_label_business_app/pages/services_tab/services_page.dart';
+import 'package:white_label_business_app/pages/workers_tab/blocs/worker_page_bloc.dart';
 import 'package:white_label_business_app/pages/workers_tab/workers_page.dart';
-import 'package:white_label_business_app/models/worker.dart';
 
 class HomeTabbedPage extends StatefulWidget {
   const HomeTabbedPage({super.key});
@@ -37,7 +36,8 @@ class _HomeTabbedPageState extends State<HomeTabbedPage>
     return MultiBlocProvider(
         providers: [
           BlocProvider<ServicePageBloc>(create: (_) => ServicePageBloc()),
-          BlocProvider<CustomerPageBloc>(create: (_) => CustomerPageBloc())
+          BlocProvider<CustomerPageBloc>(create: (_) => CustomerPageBloc()),
+          BlocProvider<WorkerPageBloc>(create: (_) => WorkerPageBloc())
         ],
         child: SafeArea(
             top: false,

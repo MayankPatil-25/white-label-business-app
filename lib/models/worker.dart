@@ -7,6 +7,9 @@ class Worker {
   final int mobile;
   final DateTime dateOfJoining;
   final int age;
+  // todo: we have to add following items:
+  // customersServedToday
+  // monthlyPayment
 
   Worker({
     required this.id,

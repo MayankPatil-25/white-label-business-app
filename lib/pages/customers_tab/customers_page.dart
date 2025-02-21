@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:white_label_business_app/common/widgets/custom_widgets.dart';
 import 'package:white_label_business_app/constants/texts_constants.dart';
+import 'package:white_label_business_app/helpers/general_utils.dart';
 import 'package:white_label_business_app/models/customer.dart';
 import 'package:white_label_business_app/pages/common_views/base_scaffold.dart';
 import 'package:white_label_business_app/pages/common_views/custom_list_item.dart';
@@ -84,7 +85,7 @@ class _CustomersPageState extends State<CustomersPage> {
                               customerName:
                                   state.customers![index].name,
                               serviceName: state.customers![index].age.toString(),
-                              workerName: state.customers![index].dateOfJoining.toString(),
+                              workerName: state.customers![index].dateOfJoining.getFormattedDate(),
                               price: null));
                     },
                   ),

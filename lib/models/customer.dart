@@ -7,6 +7,9 @@ class Customer {
   final int mobile;
   final DateTime dateOfJoining;
   final int age;
+  // todo: we have to add following items:
+  // lastVisitDateTime
+  // pending amount if possible
 
   Customer({
     required this.id,
