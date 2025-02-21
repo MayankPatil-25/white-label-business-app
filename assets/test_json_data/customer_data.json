@@ -1,0 +1,64 @@
+{
+  "serviceTransactions": [
+    {
+      "transactionId": 1001,
+      "customerId": 1,
+      "customerName": "Priyanka Patil",
+      "serviceIds": [101],
+      "serviceNames": ["Haircut"],
+      "workerId": 201,
+      "workerName": "Narayan Wagh",
+      "price": 250
+    },
+    {
+      "transactionId": 1002,
+      "customerId": 2,
+      "customerName": "Parrtiksha Wagh",
+      "serviceIds": [103],
+      "serviceNames": ["Eyebrows"],
+      "workerId": 202,
+      "workerName": "Rushikesh Wagh",
+      "price": 50
+    },
+    {
+      "transactionId": 1003,
+      "customerId": 3,
+      "customerName": "Mayank Patil",
+      "serviceIds": [101,102],
+      "serviceNames": ["Haircut", "Beard"],
+      "workerId": 201,
+      "workerName": "Narayan Wagh",
+      "price": 200
+    },
+    {
+      "transactionId": 1004,
+      "customerId": 4,
+      "customerName": "Aditya Wagh",
+      "serviceIds": [101],
+      "serviceNames": ["Haircut"],
+      "workerId": 203,
+      "workerName": "Mangesh Wagh",
+      "price": 100
+    },
+    {
+      "transactionId": 1005,
+      "customerId": 5,
+      "customerName": "Ajinkya Wagh",
+      "serviceIds": [102],
+      "serviceNames": ["Beard"],
+      "workerId": 204,
+      "workerName": "Shubham Anna",
+      "price": 100
+    },
+    {
+      "transactionId": 1006,
+      "customerId": 6,
+      "customerName": "Datta Wagh",
+      "serviceIds": [101,102],
+      "serviceNames": ["Haircut", "Beard"],
+      "workerId": 202,
+      "workerName": "Narayan Wagh",
+      "price": 150
+    }
+  ]
+}
